@@ -3,3 +3,59 @@
     padding: 0;
 }
 
+body, html{
+    width: 100vw;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(10, 12, 32);    
+}
+.cabecalho {
+    text-align: center;
+    background-color: rgba(18, 22, 59, 0.212);
+    width: 30%;
+    display: block;
+    margin: auto;
+    padding: 3%;
+    border-radius: 16px;
+    box-shadow: 12px 8px 20px rgba(0, 0, 0, 0.185);
+}
+.cabecalho__titulo{
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 12px 8px 20px rgba(0, 0, 0, 0.692);
+    color: white;
+}
+
+.container{
+    display: flex;    
+}
+
+.container__section__paragrafo{
+    color: white;
+}
+
+.container__textos{
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -40%);
+    gap: 80px;
+}
+.container__section__texto{
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+
+}
+
+.container__section__leitura{
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    resize: none;
+}
