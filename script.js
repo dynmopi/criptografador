@@ -4,34 +4,84 @@
 // A letra "o" é convertida para "ober"
 // A letra "u" é convertida para "ufat"
 
-let textArea = document.getElementById('input').value;
+// "gato" => "gaitober"
+// gaitober" => "gato"
 
-//objetos
-let substituir = {
-    'a':'ai',
-    'e':'enter',
-    'i':'imes',
-    'o':'ober',
-    'u':'ufat',
-}
+const conversor = new Map(); //objeto Map
+conversor.set("a", "ai");
+conversor.set("e", "enter");
+conversor.set("i", "imes");
+conversor.set("o", "ober");
+conversor.set("u", "ufat");
 
-
-function criptografar(textArea, substituir){
-    console.log(typeof(textArea))
-    let resultado = '';
-    let i = 0;
-    while (i < textArea.length){
-        let letra = textArea[i];
-        if (substituir.hasOwnProperty(letra)){
-            resultado += substituir[letra];
+// a -> ai
+let criptografador = function(texto, conversor){
+    let textoCriptografado = "";
+    
+    for (let i = 0; i < texto.length; i++) {
+        if (conversor.get(texto[i]) === undefined){
+            textoCriptografado = textoCriptografado . concat((texto[i]));
         } else {
-            resultado += letra;
+            textoCriptografado = textoCriptografado . concat(conversor.get(texto[i]))
         }
-        i++
+        
     }
-    return resultado
+    
+    return textoCriptografado;
 }
 
- let textoCriptografado = criptografar(textArea.toLowerCase(), substituir);
- console.log(`criptografado ${textoCriptografado}`);
+// ai -> a
+    let descriptografia = function(textoCriptografado, conversor){ //pega a referência da função criptografador
+    let conversorInverso = "";
+    conversor.forEach((valor, chave) => {
+        conversorInverso = conversorInverso.replace(valor, chave);
+    });
+
+    return conversorInverso;
+}
+
+     let pegarElementoId = function(id){
+     let texto = document.getElementById(id);
+     let java = criptografador(texto.value, conversor)
+        //  console.log(java);
+     let textoAlterado = document.getElementById(id);
+     textoAlterado.value = java
+ }
+
+// pegarElementoId('botao-1')
+
+
+
+// teste do algoritmo
+const palavraOriginal = "gato";
+const palavraCriptografada1 = "gaitober";
+
+function testeCriptografar(){
+    criptografador("gato", conversor)
+
+    if (palavraCriptografada1 === criptografador("gato", conversor)){
+        console.log("deu certo");
+    } else {
+        console.log("deu errado");
+    }
+}
+
+
+function testeDescriptografar(){
+
+let testeDoManoJava = descriptografia(palavraCriptografada1, conversor); 
+    if (testeDoManoJava === palavraOriginal){
+        console.log("deu errado");
+    } else {
+        console.log("deu certo");
+    }
+}
+
+testeCriptografar();
+testeDescriptografar();
+
+
+
+
+
 

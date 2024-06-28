@@ -17,13 +17,13 @@
            
             
             <div class="container__textos">
-               
-                <textarea class="container__section__texto" placeholder="Escreva o seu texto" id="input"></textarea>
-                <textarea class="container__section__leitura" readonly id="output"></textarea>
+                <input type="text" id="botao-1">
+                <textarea class="container__section__texto" placeholder="Escreva o seu texto"></textarea>
+                <div class="container__section__leitura" id="output"></div>
             </div>
             <div class="container__section__div">
-                <input class="div__botao__1" type="button" value="Criptografar" onclick="criptografar()">
-                <input class="div__botao__2" type="button" value="Descriptografar" onclick="descriptografar()">
+                <input class="div__botao__1" type="button" value="Criptografar" onclick="pegarElementoId('botao-1')">
+                <input class="div__botao__2" type="button" value="Descriptografar">
             </div>
         </section>
         </main>
