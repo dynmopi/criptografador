@@ -6,7 +6,7 @@
     <title>Decodificador</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
-<body>
+<body onload="idResultado('idResultado')">
     <header class="cabecalho">
         <h1 class="cabecalho__titulo">Decodificador de texto</h1>
             <p class="cabecalho__footer">&copy; Feito por Danrley</p> 
@@ -19,12 +19,12 @@
             <div class="container__textos">
                 <!-- <input type="text" id="botao-1"> -->
 
-                <textarea class="container__section__texto" placeholder="Escreva o seu texto" id="botao-1"></textarea>
+                <textarea class="container__section__texto" placeholder="Escreva o seu texto" id="area"></textarea>
                 <div class="container__section__leitura" id="idResultado"></div>
             </div>
             <div class="container__section__div">
-                <input class="div__botao__1" type="button" value="Criptografar" onclick="pegarElementoId('botao-1', 'idResultado')">
-                <input class="div__botao__2" type="button" value="Descriptografar" onclick="pegarElementoId('botao-2', 'idResultado')">
+                <input class="div__botao__1" type="button" value="Criptografar" id="botao1" onclick="pegarElementoId('area', 'botao1')">
+                <input class="div__botao__2" type="button" value="Descriptografar" id="botao2" onclick="pegarElementoId('area', 'botao2')">
             </div>
         </section>
         </main>

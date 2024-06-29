@@ -41,22 +41,33 @@ let criptografador = function(texto, conversor){
 }
 //  console.log(java);
 
-    let pegarElementoId = function(id, idResultado){
-    let texto = document.getElementById(id);
-    let resultado = document.getElementById(idResultado);
-    console.log(texto.value)
+    let idResultado = function(idResultado){
+        const resultado = document.getElementById('idResultado');
+        
+        return resultado;
+    }
 
-    if(id === 'botao-1'){
+    let pegarElementoId = function(area, botao1, botao2){
+    let texto = document.getElementById(area);
+    // const resultado = document.getElementById(id);
+    // console.log(texto.value)
+    console.log(botao1)
+    console.log(botao2)
+    console.log(idResultado.value)
+
+    
+
+    if (botao1 !== undefined){
         let criptografar = criptografador(texto.value, conversor);
-        resultado.innerHTML = criptografar;
+        idResultado.innerHTML = criptografar;
+        console.log(criptografar)
 
-        console.log(id);    
     } else {
         console.log(id);
         let descriptografar = descriptografia(texto.value, conversor);
-        resultado.innerHTML = descriptografar;
+        idResultado.innerHTML = descriptografar;
     }
-    
+    texto.value = "";
     
  }
 
