@@ -39,14 +39,27 @@ let criptografador = function(texto, conversor){
 
     return conversorInverso;
 }
+//  console.log(java);
 
-     let pegarElementoId = function(id){
-     let texto = document.getElementById(id);
-     let java = criptografador(texto.value, conversor)
-        //  console.log(java);
-     let textoAlterado = document.getElementById(id);
-     textoAlterado.value = java
+    let pegarElementoId = function(id, idResultado){
+    let texto = document.getElementById(id);
+    let resultado = document.getElementById(idResultado);
+    console.log(texto.value)
+
+    if(id === 'botao-1'){
+        let criptografar = criptografador(texto.value, conversor);
+        resultado.innerHTML = criptografar;
+
+        console.log(id);    
+    } else {
+        console.log(id);
+        let descriptografar = descriptografia(texto.value, conversor);
+        resultado.innerHTML = descriptografar;
+    }
+    
+    
  }
+
 
 // pegarElementoId('botao-1')
 
