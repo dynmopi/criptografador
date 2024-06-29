@@ -15,7 +15,7 @@ conversor.set("o", "ober");
 conversor.set("u", "ufat");
 
 // a -> ai
-let criptografador = function(texto, conversor){
+function criptografador(texto, conversor){
     let textoCriptografado = "";
     
     for (let i = 0; i < texto.length; i++) {
@@ -31,24 +31,34 @@ let criptografador = function(texto, conversor){
 }
 
 // ai -> a
-    let descriptografia = function(textoCriptografado, conversor){ //pega a referência da função criptografador
-    let conversorInverso = "";
-    conversor.forEach((valor, chave) => {
-        conversorInverso = conversorInverso.replace(valor, chave);
-    });
+    let descriptografia = function(textoCriptografado){ //pega a referência da função criptografador
+    const inversoConversor = new Map();
+        for (let [chave, valor] of conversor.entries()){
+            inversoConversor.set(valor, chave);
+        }
 
+    let conversorInverso = textoCriptografado;
+
+    for(let [chave, valor] of inversoConversor.entries()){
+        const regex = new RegExp(chave, 'g');
+        conversorInverso = conversorInverso.replace(regex, valor);
+    }
+   
+    // criptografador(textoCriptografado, conversor);
+    // let conversorInverso = "";
+
+    // conversor.forEach((valor, chave) => {
+    //     conversorInverso = conversorInverso.replace(valor, chave);
+    // });
+    
     return conversorInverso;
 }
 //  console.log(java);
 
-    let idResultado = function(idResultado){
-        const resultado = document.getElementById('idResultado');
-        
-        return resultado;
-    }
-
     let pegarElementoId = function(area, botao1, botao2){
     let texto = document.getElementById(area);
+    const resultado = document.getElementById('idResultado');
+
     // const resultado = document.getElementById(id);
     // console.log(texto.value)
     console.log(botao1)
@@ -56,16 +66,16 @@ let criptografador = function(texto, conversor){
     console.log(idResultado.value)
 
     
+    let criptografar = criptografador(texto.value, conversor);
 
-    if (botao1 !== undefined){
-        let criptografar = criptografador(texto.value, conversor);
-        idResultado.innerHTML = criptografar;
-        console.log(criptografar)
+    if (botao1 == 'botao1'){
+        resultado.innerHTML = criptografar;
+        console.log(criptografar);
 
     } else {
-        console.log(id);
-        let descriptografar = descriptografia(texto.value, conversor);
-        idResultado.innerHTML = descriptografar;
+        resultado.inneHTML = descriptografia(texto.value)
+        console.log(descriptografia(texto.value, conversor));
+        // idResultado.innerHTML = descriptografia;
     }
     texto.value = "";
     
@@ -92,12 +102,15 @@ function testeCriptografar(){
 
 
 function testeDescriptografar(){
+criptografador(palavraOriginal, conversor)
+let testeDoManoJava = descriptografia(palavraCriptografada1);
 
-let testeDoManoJava = descriptografia(palavraCriptografada1, conversor); 
+// console.log(testeDoManoJava); 
+
     if (testeDoManoJava === palavraOriginal){
-        console.log("deu errado");
-    } else {
         console.log("deu certo");
+    } else {
+        console.log("deu errado");
     }
 }
 
