@@ -14,17 +14,14 @@
     </header>
     <main class="container">
         <section class="container__section">
-           
-            
             <div class="container__textos">
-                <!-- <input type="text" id="botao-1"> -->
-
                 <textarea class="container__section__texto" placeholder="Escreva o seu texto" id="area"></textarea>
-                <div class="container__section__leitura" id="idResultado"></div>
+                <textarea class="container__section__leitura" id="idResultado" readonly></textarea>
             </div>
             <div class="container__section__div">
-                <input class="div__botao__1" type="button" value="Criptografar" id="botao1" onclick="pegarElementoId('area', 'botao1')">
-                <input class="div__botao__2" type="button" value="Descriptografar" id="botao2" onclick="pegarElementoId('area', 'botao2')">
+                <input class="div__botao__1" type="button" value="Criptografar" id="botao1" onclick="mostrarNaTela('area', 'botao1')">
+                <input class="div__botao__2" type="button" value="Descriptografar" id="botao2" onclick="mostrarNaTela('area', 'botao2')">
+                <input class="div__botao__3" type="button" value="Copiar" id="botao3" onclick="copiarTexto()">
             </div>
         </section>
         </main>

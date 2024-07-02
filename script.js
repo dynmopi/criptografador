@@ -14,6 +14,29 @@ conversor.set("i", "imes");
 conversor.set("o", "ober");
 conversor.set("u", "ufat");
 
+
+function copiarTexto(){
+    let botaoCopiar = document.getElementById('botao3');
+    let texto = document.getElementById('idResultado');
+    console.log(botaoCopiar);
+
+    if(texto.value === ''){
+        alert(`[ERRO] Digite seu texto e depois faça o processo.`)
+    } else {
+        texto.select();
+        texto.setSelectionRange(0, 99999);
+
+        //api que substituiu o document.execCommand
+        navigator.clipboard.writeText(texto.value).then(function() {
+            // alert(`Texto copiado ${texto.value}`);
+        }).catch(function(error) {
+            console.log('Erro ao copiar');
+        })
+    
+    }
+    }
+
+
 // a -> ai
 function criptografador(texto, conversor){
     let textoCriptografado = "";
@@ -31,6 +54,7 @@ function criptografador(texto, conversor){
 }
 
 // ai -> a
+
     let descriptografia = function(textoCriptografado){ //pega a referência da função criptografador
     const inversoConversor = new Map();
         for (let [chave, valor] of conversor.entries()){
@@ -43,49 +67,43 @@ function criptografador(texto, conversor){
         const regex = new RegExp(chave, 'g');
         conversorInverso = conversorInverso.replace(regex, valor);
     }
-   
-    // criptografador(textoCriptografado, conversor);
-    // let conversorInverso = "";
 
-    // conversor.forEach((valor, chave) => {
-    //     conversorInverso = conversorInverso.replace(valor, chave);
-    // });
-    
     return conversorInverso;
-}
+}   
 //  console.log(java);
 
-    let pegarElementoId = function(area, botao1, botao2){
+    let mostrarNaTela = function(area, botao){
+        
+    //regex para validar o texto, isso não está funcionando, sempre tá dando true. 
+    const validarTexto = (area) => { 
+        return /^[a-z]+$/.test(area); 
+      };
+    
+    console.log(Boolean(validarTexto));
+
     let texto = document.getElementById(area);
     const resultado = document.getElementById('idResultado');
-
-    // const resultado = document.getElementById(id);
-    // console.log(texto.value)
-    console.log(botao1)
-    console.log(botao2)
+    
+    //testes para verificar os botões selecionados
+    console.log(botao)
     console.log(idResultado.value)
 
-    
     let criptografar = criptografador(texto.value, conversor);
+    //isso porque a função descriptografia() precisa do textoCriptografado
 
-    if (botao1 == 'botao1'){
+    if(validarTexto === true && botao == 'botao1'){
         resultado.innerHTML = criptografar;
         console.log(criptografar);
 
-    } else {
-        resultado.inneHTML = descriptografia(texto.value)
+    } else if (validarTexto === true && botao == 'botao2') {
+        resultado.innerHTML = descriptografia(texto.value)
         console.log(descriptografia(texto.value, conversor));
-        // idResultado.innerHTML = descriptografia;
-    }
-    texto.value = "";
+    } 
+        texto.value = "";
     
- }
+    }
 
-
-// pegarElementoId('botao-1')
-
-
-
+    
 // teste do algoritmo
 const palavraOriginal = "gato";
 const palavraCriptografada1 = "gaitober";
@@ -99,7 +117,6 @@ function testeCriptografar(){
         console.log("deu errado");
     }
 }
-
 
 function testeDescriptografar(){
 criptografador(palavraOriginal, conversor)
