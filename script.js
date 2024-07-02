@@ -78,11 +78,11 @@ let mostrarNaTela = function(area, botao){
     //regex para validar o texto, isso não está funcionando, sempre tá dando true. 
 
     function validarTexto(texto){ 
-        return /^[a-z]+$/.test(texto); 
+        return /^[a-z ]+$/.test(texto); 
       };
 
     console.log((validarTexto(texto.value)));
-    const resultado = document.getElementById('idResultado');
+    let resultado = document.getElementById('idResultado');
     
     //testes para verificar os botões selecionados
     console.log(botao)
@@ -100,12 +100,11 @@ let mostrarNaTela = function(area, botao){
         console.log(descriptografia(texto.value, conversor));
     } else {
         alert(`[ERRO] Apenas caracteres minúsculos, sem acentos e não especiais. Digite o texto.`)
-        resultado.value = "";
     } 
         texto.value = "";
     
     }
-
+    
     
 // teste do algoritmo
 const palavraOriginal = "gato";
