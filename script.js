@@ -72,32 +72,35 @@ function criptografador(texto, conversor){
 }   
 //  console.log(java);
 
-    let mostrarNaTela = function(area, botao){
+let mostrarNaTela = function(area, botao){
+    let texto = document.getElementById(area);
         
     //regex para validar o texto, isso não está funcionando, sempre tá dando true. 
-    const validarTexto = (area) => { 
-        return /^[a-z]+$/.test(area); 
-      };
-    
-    console.log(Boolean(validarTexto));
 
-    let texto = document.getElementById(area);
+    function validarTexto(texto){ 
+        return /^[a-z]+$/.test(texto); 
+      };
+
+    console.log((validarTexto(texto.value)));
     const resultado = document.getElementById('idResultado');
     
     //testes para verificar os botões selecionados
     console.log(botao)
-    console.log(idResultado.value)
-
-    let criptografar = criptografador(texto.value, conversor);
+    console.log(resultado.value)
+    
     //isso porque a função descriptografia() precisa do textoCriptografado
-
-    if(validarTexto === true && botao == 'botao1'){
+    let criptografar = criptografador(texto.value, conversor);
+    
+    if(validarTexto(texto.value) === true && botao === "botao1"){
         resultado.innerHTML = criptografar;
         console.log(criptografar);
 
-    } else if (validarTexto === true && botao == 'botao2') {
+    } else if (validarTexto(texto.value) === true && botao === "botao2") {
         resultado.innerHTML = descriptografia(texto.value)
         console.log(descriptografia(texto.value, conversor));
+    } else {
+        alert(`[ERRO] Apenas caracteres minúsculos, sem acentos e não especiais. Digite o texto.`)
+        resultado.value = "";
     } 
         texto.value = "";
     
