@@ -15,23 +15,27 @@ body{
     min-height: 100%;
 
     font-family: Arial, Helvetica, sans-serif;   
-    background-image: linear-gradient(225deg,rgb(14, 16, 44), #2b1e14);
+    background-image: linear-gradient(180deg,rgb(0, 0, 0), #141414);
     background-attachment: fixed;
+
+    overflow-x: hidden;
 }
 .cabecalho {
     text-align: center;
-    background-color: rgba(18, 22, 59, 0.212);
-    width: 30%;
+    font-style: italic;
+    background-color: rgb(255, 255, 255);
+    width: 5%;
     display: block;
-    margin: 15px auto;
-    padding: 3%;
+    margin: 15px 6.5%;
+    padding: 2%;
     border-radius: 16px;
     box-shadow: 12px 8px 20px rgba(0, 0, 0, 0.185);
 }
 .cabecalho__titulo{
     font-family: 'Courier New', Courier, monospace;
-    text-shadow: 12px 8px 20px rgba(0, 0, 0, 0.692);
-    color: white;
+    font-size: 35px;
+    text-shadow: 12px 8px 20px rgba(0, 0, 0, 0.336);
+    color: rgb(17, 17, 17);
 }
 
 .container{
@@ -94,6 +98,7 @@ body{
     font-weight: bolder;
     border-radius: 12px;
     border: 0rem;
+    margin-bottom: 30px;
 }
 
 .div__botao__1:hover, .div__botao__3:hover{
@@ -119,7 +124,7 @@ body{
 
 .rodape {
     color: white;
-    margin-top: auto;
+    margin-top: 36%;
     text-align: center;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.562);
